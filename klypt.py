@@ -208,7 +208,7 @@ class VerificationView(discord.ui.View):
     def __init__(self):
         super().__init__(timeout=None)
 
-    @discord.ui.button(label="✅ Verify", style=discord.ButtonStyle.success, custom_id="verify_btn", emoji="✅")
+    @discord.ui.button(label="✅ Verify", style=discord.ButtonStyle.success, custom_id="verify_btn")
     async def verify(self, interaction: discord.Interaction, button: discord.ui.Button):
         member = interaction.user
         guild = interaction.guild
