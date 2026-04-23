@@ -3,9 +3,6 @@ from discord.ext import commands
 from discord import app_commands
 import asyncio
 import os
-from dotenv import load_dotenv
-
-load_dotenv()
 
 # ============================================================
 # CONFIGURATION - ΑΛΛΑΞΕ ΤΑ IDs ΕΔΩ
