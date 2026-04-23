@@ -218,7 +218,7 @@ class VerificationView(discord.ui.View):
             await interaction.response.send_message("✅ Είσαι ήδη verified!", ephemeral=True)
             return
 
-        await member.add_roles(role)
+        await member.add_roles(ROLE_VERIFIED)
         await interaction.response.send_message(
             f"🎉 Επαληθεύτηκες επιτυχώς! Καλωσήρθες στον server, {member.mention}!",
             ephemeral=True
@@ -591,7 +591,7 @@ async def ban(ctx, member: discord.Member, *, reason: str = "Κανένας λό
 
     log_ch = ctx.guild.get_channel(CHANNEL_MOD_LOGS)
     if log_ch:
-        embed = discord.Embed(title="🔨 Ban", color=discord.Color.dark_red())
+        embed = discord.Embed(title="🔨 Banned", color=discord.Color.dark_red())
         embed.add_field(name="Χρήστης", value=f"{member} ({member.id})", inline=True)
         embed.add_field(name="Moderator", value=f"{ctx.author}", inline=True)
         embed.add_field(name="Λόγος", value=reason, inline=False)
