@@ -615,4 +615,5 @@ async def unban(ctx, user_id: int, *, reason: str = "Κανένας λόγος")
 
 
 if __name__ == "__main__":
+    keep_alive()
     bot.run(TOKEN)
