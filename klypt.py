@@ -29,9 +29,8 @@ GUILD_ID = int(os.getenv("GUILD_ID", "1495772224236290048"))
 ROLE_DM_ALL = int(os.getenv("ROLE_DM_ALL", "1496228716345294888"))          # Μόνο αυτό το role μπορεί να κάνει !dmall
 ROLE_CEO = int(os.getenv("ROLE_CEO", "1496228716345294888"))
 ROLE_CO_CEO = int(os.getenv("ROLE_CO_CEO", "1496228907068821794"))
-ROLE_MANAGER = int(os.getenv("ROLE_MANAGER", "1496228969089990746"))
-ROLE_VERIFIED = int(os.getenv("ROLE_VERIFIED", "1496229353082585149"))       # Auto-role για verification
-ROLE_AUTOROLE = int(os.getenv("ROLE_AUTOROLE", "1496229444753428480"))       # Auto-role για νέα μέλη
+ROLE_MANAGER = int(os.getenv("ROLE_MANAGER", "1496228969089990746"))       # Auto-role για verification
+ROLE_AUTOROLE = int(os.getenv("ROLE_AUTOROLE", "1496229353082585149"))       # Auto-role για νέα μέλη
 
 # --- CHANNEL IDs ---
 CHANNEL_TICKETS = int(os.getenv("CHANNEL_TICKETS", "1496236336217067642"))   # Κανάλι για ticket panel
@@ -198,31 +197,6 @@ class CloseTicketView(discord.ui.View):
 
         await asyncio.sleep(5)
         await channel.delete()
-
-
-# ============================================================
-# VERIFICATION VIEW
-# ============================================================
-
-class VerificationView(discord.ui.View):
-    def __init__(self):
-        super().__init__(timeout=None)
-
-    @discord.ui.button(label="✅ Verify", style=discord.ButtonStyle.success, custom_id="verify_btn")
-    async def verify(self, interaction: discord.Interaction, button: discord.ui.Button):
-        member = interaction.user
-        guild = interaction.guild
-        role = guild.get_role(ROLE_VERIFIED)
-
-        if role in member.roles:
-            await interaction.response.send_message("✅ Είσαι ήδη verified!", ephemeral=True)
-            return
-
-        await member.add_roles(ROLE_VERIFIED)
-        await interaction.response.send_message(
-            f"🎉 Επαληθεύτηκες επιτυχώς! Καλωσήρθες στον server, {member.mention}!",
-            ephemeral=True
-        )
 
 
 # ============================================================
